@@ -1,3 +1,5 @@
+const GAME_TIME_IN_SECONDS = 10;
+
 document.addEventListener("DOMContentLoaded", function () {
   const wordDisplay = document.querySelector("#word-display");
   const inputField = document.querySelector("#input-field");
@@ -11,8 +13,11 @@ document.addEventListener("DOMContentLoaded", function () {
       this.words = ["apple", "banana", "cherry", "orange", "grape"];
       this.currentWord = "";
       this.score = 0;
-      this.time = 60;
+      this.time = GAME_TIME_IN_SECONDS;
       this.timer = null;
+      console.log("Here");
+      console.log(GAME_TIME_IN_SECONDS);
+      console.log(this.time);
     }
 
     startGame() {
@@ -85,11 +90,11 @@ document.addEventListener("DOMContentLoaded", function () {
     restartGame() {
       console.log("gameRestarted");
       this.score = 0;
-      this.time = 60;
+      this.time = GAME_TIME_IN_SECONDS;
       scoreDisplay.textContent = this.score;
       timeDisplay.textContent = this.time;
       inputField.disabled = true;
-      restartButton.disabled = true;
+      restartButton.disabled = false;
       startButton.disabled = false;
       wordDisplay.textContent = "";
       clearInterval(this.timer);
@@ -102,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
     game.startGame();
     inputField.disabled = false;
     startButton.disabled = true;
-    restartButton.disabled = true;
+    restartButton.disabled = false;
   });
 
   inputField.addEventListener("keyup", (event) => {
@@ -110,8 +115,9 @@ document.addEventListener("DOMContentLoaded", function () {
       game.checkInput();
     }
   });
-
+      console.log("add event listener");
   restartButton.addEventListener("click", () => {
+    console.log("restart clicked");
     game.restartGame();
   });
 });
