@@ -1,0 +1,48 @@
+h1 {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+p {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#input {
+  padding: 10px;
+  font-size: 24px;
+  border: none;
+  border-bottom: 2px solid black;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#input:focus {
+  outline: none;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 24px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#start-btn {
+  background-color: green;
+  color: white;
+}
+
+#restart-btn {
+  background-color: red;
+  color: white;
+}
