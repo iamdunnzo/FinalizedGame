@@ -1,4 +1,4 @@
-const GAME_TIME_IN_SECONDS = 10;
+const GAME_TIME_IN_SECONDS = 60;
 
 document.addEventListener("DOMContentLoaded", function () {
   const wordDisplay = document.querySelector("#word-display");
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   class Game {
     constructor() {
-      this.words = ["apple", "banana", "cherry", "orange", "grape"];
+      this.words = ["apple", "banana", "cherry", "orange", "grape", "pear", "kiwi", "plum", "mango", "peach", "grapefruit", "blueberry", "lemon", "strawberry"];
       this.currentWord = "";
       this.score = 0;
       this.time = GAME_TIME_IN_SECONDS;
