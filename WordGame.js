@@ -1,6 +1,9 @@
+//global variable 
 const GAME_TIME_IN_SECONDS = 60;
 
+// Wait for the page to finish loading
 document.addEventListener("DOMContentLoaded", function () {
+  // Select the elements to use in the game
   const wordDisplay = document.querySelector("#word-display");
   const inputField = document.querySelector("#input-field");
   const startButton = document.querySelector("#start-btn");
@@ -10,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   class Game {
     constructor() {
+      // Initialize the game state
       this.words = ["apple", "banana", "cherry", "orange", "grape", "pear", "kiwi", "plum", "mango", "peach", "grapefruit", "blueberry", "lemon", "strawberry"];
       this.currentWord = "";
       this.score = 0;
@@ -21,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     startGame() {
+      // Start the game by generating a word and setting a timer
       console.log("gameStarted");
       this.generateWord();
       this.timer = setInterval(() => {
@@ -30,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     generateWord() {
+      // Choose a random word from the list of words and display it
       console.log("generateWord");
       const randomIndex = Math.floor(Math.random() * this.words.length);
       this.currentWord = this.words[randomIndex];
@@ -38,9 +44,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     checkInput() {
+      // Check if the user's input matches the current word
       const input = inputField.value.trim().toLowerCase();
 
       if (input === this.currentWord) {
+        // If the input is correct, update the score, display the next word, and add the "correct" class
         wordDisplay.classList.add("correct");
         setTimeout(() => {
           wordDisplay.classList.remove("correct");
@@ -49,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
         this.score++;
         scoreDisplay.textContent = this.score;
       } else {
+        // If the input is incorrect, subtract from the score, add the "incorrect" class, and display an alert if the score goes below 0
         wordDisplay.classList.add("incorrect");
         setTimeout(() => {
           wordDisplay.classList.remove("incorrect");
@@ -63,15 +72,17 @@ document.addEventListener("DOMContentLoaded", function () {
           alert("Game over, you lost.");
         }
       }
-
+      // Clear the input field
       inputField.value = "";
     }
 
     updateTime() {
+      // Update the time every second and display it on the screen
       console.log("updateTime");
       this.time--;
 
       if (this.time <= 0) {
+       // If the time runs out, display a congratulatory or losing alert, and disable the input field and start button
         clearInterval(this.timer);
         inputField.disabled = true;
         startButton.disabled = true;
@@ -83,11 +94,13 @@ document.addEventListener("DOMContentLoaded", function () {
           alert("Game over, you lost.");
         }
       } else {
+       // Otherwise, display the remaining time
         timeDisplay.textContent = this.time;
       }
     }
 
     restartGame() {
+      // Reset the game state to its initial values and clear the timer
       console.log("gameRestarted");
       this.score = 0;
       this.time = GAME_TIME_IN_SECONDS;
